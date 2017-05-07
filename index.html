@@ -12,7 +12,7 @@
     <h1>GitHub user search</h1>
     <div class="containerStyle">
         <form id="gitHubSearch" onsubmit="gitHubSearch(window.event)">
-            <input placeholder="Search username..." id="username" class="inputStyle" required>
+            <input placeholder="Search username..." id="username" class="inputStyle">
             <button type="button" onclick="gitHubSearch(window.event)" class="buttonStyle">Search</button>
         </form>
         <div id="response" class="responseStyle"></div>
@@ -30,8 +30,12 @@
         // add header for Repos list
         // add image for star and fork
         // required field, do nothing if nothing is written in the input field
-        //hours 11am - 3pm (cca 3 productive hours) + 1 hour
+        //hours 11am - 3pm (cca 3 productive hours) + 1 hour + 1 hour
         var username = document.getElementById("username").value;
+        if (username === '') {
+            document.getElementById("response").innerHTML = '<div class="alert">Username is required</div>';
+            return;
+        }
         var xhttp = new XMLHttpRequest();
         xhttp.open("GET", "https://api.github.com/users/" + username, false);
         xhttp.setRequestHeader("Content-type", "application/json");
@@ -46,15 +50,14 @@
             xhttp.setRequestHeader("Content-type", "application/json");
             xhttp.send();
             var reposResponse = JSON.parse(xhttp.responseText);
-
-            var tableHeader = '<table style="width: 100%;"><tr><td class="leftColumn" style="width: 100%; text-align: left; border-bottom: 2px solid black"><b>Repositories</b></td></tr>';
+            var tableHeader = '<table style="width: 100%; border-collapse: collapse"><tr><td class="leftColumn" style="width: 100%; text-align: left; border-bottom: 2px solid black"><b>Repositories</b></td></tr>';
             var tableFooter = '</table>';
             var repos = tableHeader;
             reposResponse.forEach(function(repo) {
-                repos += '<tr><td class="leftColumn">' + repo.name + '</td><td class="rightColumn">'+ starIcon + '&nbsp;' + repo.stargazers_count + '&nbsp;' +forkIcon + '&nbsp;' + repo.forks_count + '</td></tr>'
+                repos += '<tr class="rowStyle"><td class="leftColumn"><b>' + repo.name + '</b></td><td class="rightColumn">'+ starIcon + '&nbsp;' + repo.stargazers_count + '&nbsp;' +forkIcon + '&nbsp;' + repo.forks_count + '</td></tr>'
             });
             repos += tableFooter;
-            var bio = userResponse.bio !== null ? userResponse.bio : ''
+            var bio = userResponse.bio !== null ? userResponse.bio : '';
             document.getElementById("response").innerHTML = avatarImg +'<span>@' + userResponse.login +'</span><br/>'
                 + '<span>' +userResponse.name + '</span><br/>' + '<span>' + bio + '</span>'
                 + repos;

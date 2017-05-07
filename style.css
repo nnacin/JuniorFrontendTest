@@ -1,5 +1,6 @@
 .bodyStyle {
     background-color: #F0F0F0;
+    font-family: Helvetica, Arial, sans-serif;
 }
 
 .containerStyle {
@@ -57,7 +58,7 @@
     color: #A94442;
     background-color: #F2DEDE;
     padding: 15px;
-    margin-bottom: 20px;
+    //margin-bottom: 20px;
     border: 1px solid #EBCCD1;
     border-radius: 4px;
     width: 85%;
@@ -82,3 +83,16 @@
     height: 90px;
     display: inline-block;
 }
+
+.rowStyle {
+    border-bottom: 1px solid lightgray;
+}
+
+.rowStyle:last-child {
+    border-bottom: none;
+}
+
+td {
+    padding: 10px 0;
+}
+
