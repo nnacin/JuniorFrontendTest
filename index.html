@@ -8,10 +8,10 @@
 </head>
 
 <body class="bodyStyle">
+    <h1 class="headerStyle">GitHub user search</h1>
 
-    <h1>GitHub user search</h1>
     <div class="containerStyle">
-        <form id="gitHubSearch" onsubmit="gitHubSearch(window.event)">
+        <form id="gitHubSearch" onsubmit="gitHubSearch(window.event)" class="formStyle">
             <input placeholder="Search username..." id="username" class="inputStyle">
             <button type="button" onclick="gitHubSearch(window.event)" class="buttonStyle">Search</button>
         </form>
@@ -31,6 +31,12 @@
         // add image for star and fork
         // required field, do nothing if nothing is written in the input field
         //hours 11am - 3pm (cca 3 productive hours) + 1 hour + 1 hour
+        //button outline
+        //button style
+        //warning in chrome console
+        //italic username
+        // username name and bio next to image
+        //icons i.e. number close to icons need to be more up
         var username = document.getElementById("username").value;
         if (username === '') {
             document.getElementById("response").innerHTML = '<div class="alert">Username is required</div>';
@@ -50,7 +56,7 @@
             xhttp.setRequestHeader("Content-type", "application/json");
             xhttp.send();
             var reposResponse = JSON.parse(xhttp.responseText);
-            var tableHeader = '<table style="width: 100%; border-collapse: collapse"><tr><td class="leftColumn" style="width: 100%; text-align: left; border-bottom: 2px solid black"><b>Repositories</b></td></tr>';
+            var tableHeader = '<table style="width: 100%; border-collapse: collapse"><tr><td class="leftColumnHeader" style="width: 100%; text-align: left; border-bottom: 2px solid #989898"><b>Repositories</b></td></tr>';
             var tableFooter = '</table>';
             var repos = tableHeader;
             reposResponse.forEach(function(repo) {
@@ -58,9 +64,9 @@
             });
             repos += tableFooter;
             var bio = userResponse.bio !== null ? userResponse.bio : '';
-            document.getElementById("response").innerHTML = avatarImg +'<span>@' + userResponse.login +'</span><br/>'
-                + '<span>' +userResponse.name + '</span><br/>' + '<span>' + bio + '</span>'
-                + repos;
+            var userInfo = '<table><tr><td>' + avatarImg+ '</td><td><i>@' + userResponse.login +'</i><br/>' +userResponse.name + '<br/>' + bio + '</td></tr></table>'
+
+            document.getElementById("response").innerHTML = userInfo + repos;
         }
     }
 </script>

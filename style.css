@@ -3,15 +3,23 @@
     font-family: Helvetica, Arial, sans-serif;
 }
 
+.headerStyle {
+    text-align: center;
+}
+
 .containerStyle {
     background-color: #ffffff;
     height: auto;
     width: 30%;
     text-align: center;
     margin: 0 auto;
-    padding: 25px 5px;
+    padding: 25px 10px;
     border-radius: 8px;
     box-shadow: 0 6px 12px rgba(0,0,0,.175);
+}
+
+.formStyle {
+    padding: 0 10px;
 }
 
 .inputStyle {
@@ -58,22 +66,27 @@
     color: #A94442;
     background-color: #F2DEDE;
     padding: 15px;
-    //margin-bottom: 20px;
     border: 1px solid #EBCCD1;
     border-radius: 4px;
-    width: 85%;
     margin-top: 10px;
-    margin-left: 5px;
 }
 
 .responseStyle {
-    padding-left: 15px;
     text-align: center;
+    padding: 0 10px;
+    width: 86%;
+    margin: 5px 0 0 17px;
 }
 
 .leftColumn {
     float: left;
+    padding-left: 10px;
 }
+
+.leftColumnHeader {
+    float: left;
+}
+
 .rightColumn {
     float: right;
 }
