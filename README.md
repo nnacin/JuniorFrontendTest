@@ -1,5 +1,10 @@
 # JuniorFrontendTest
 
+## NOTES
+
+* I did not know if I can use Bootstrap, so I didn't
+* I have never tried Unit testing, I didn't successfully implemented it in the project, but I tried and work a bit (tried Jasmine and QUnit, the latter is still present in the project, tests.js file)
+
 ## GOALS
 
 
