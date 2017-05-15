@@ -1,5 +1,11 @@
 # JuniorFrontendTest
 
+## IMPROVEMENTS
+
+* Separation of concerns (new files, functions, classes)
+* Repetitive code = function (call to GitHub API)
+* Usage of ES6
+
 ## NOTES
 
 * I did not know if I can use Bootstrap, so I didn't
